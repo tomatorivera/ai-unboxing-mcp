@@ -23,7 +23,7 @@ def greet_user(name: str, style: str = "friendly") -> str:
     """Generate a greeting prompt"""
     styles = {
         "friendly": "Please write a warm, friendly greeting",
-        "formal": "Please write a formal, professional greeting",
+        "formal": "Please write a formal, professional ghttp://localhost:6274/?MCP_PROXY_AUTH_TOKEN=bee8fbbe1b734f902d8aff3d8e1b54300fb26bb8f2cb09abb81c1acbc3691a99#resourcesreeting",
         "casual": "Please write a casual, relaxed greeting",
     }
 
