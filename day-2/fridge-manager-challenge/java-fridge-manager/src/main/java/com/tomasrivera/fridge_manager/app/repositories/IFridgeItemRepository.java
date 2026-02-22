@@ -7,4 +7,5 @@ import java.util.List;
 // To-Do: implement more utilities based on the fridge utils from the original exercise.
 public interface IFridgeItemRepository {
     List<FridgeItem> findAll();
+    void save(FridgeItem item);
 }

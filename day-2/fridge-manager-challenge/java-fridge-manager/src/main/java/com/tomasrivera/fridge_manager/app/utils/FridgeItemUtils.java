@@ -25,4 +25,8 @@ public class FridgeItemUtils {
             return null;
         }
     }
+
+    public static String getItemInCsvFormat(FridgeItem data) {
+        return data.itemName() + "," + data.category() + "," + data.purchaseDate() + "," + data.bestBeforeDate() + "," + data.quantity();
+    }
 }
