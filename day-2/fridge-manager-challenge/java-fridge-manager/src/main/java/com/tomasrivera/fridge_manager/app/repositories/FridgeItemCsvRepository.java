@@ -47,6 +47,28 @@ public class FridgeItemCsvRepository implements IFridgeItemRepository {
     }
 
     @Override
+    public List<FridgeItem> findByCategory(String category) {
+        Path path = Paths.get(CSV_FILE_PATH);
+        if (Files.notExists(path)) {
+            log.warn("CSV file does not exist yet: {}", path.toAbsolutePath());
+            return List.of();
+        }
+
+        try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            return reader.lines()
+                    .skip(1) // header
+                    .filter(line -> !line.isBlank())
+                    .map(FridgeItemUtils::fromCsvLine)
+                    .filter(f -> f.category().equalsIgnoreCase(category))
+                    .collect(Collectors.toList());
+
+        } catch (IOException e) {
+            log.error("Error reading CSV file", e);
+            return List.of();
+        }
+    }
+
+    @Override
     public void save(FridgeItem item) {
         try
         {
