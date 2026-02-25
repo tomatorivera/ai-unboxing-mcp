@@ -33,4 +33,11 @@ public class FridgeItemToolsProvider {
         itemRepository.save(item);
     }
 
+    @McpTool(name = "get_items_by_category", description = "Provides the full list of items in a provided category")
+    public List<FridgeItem> getItemsByCategory(
+        @McpToolParam(required = true, description = "The category to match in the items") String category
+    ) {
+        return itemRepository.findByCategory(category);
+    }
+
 }
